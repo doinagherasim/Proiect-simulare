@@ -89,7 +89,6 @@ function longetStr(arrayString) {
   return longest;
 }
 
-
 console.log("longestString", longetStr(["hei hei hei hei heii", "hei hei hei hei", "hei hei"]));
 
 // se impart la 1 si la ei singuri
@@ -143,7 +142,150 @@ function secondHighest(numbers) {
   return null;
 };
 
-console.log(secondHighest([3,6,9,1,2]))
+console.log(secondHighest([3,6,9,1,2]));
+
+function uniquesChar(string) {
+  for (let i=0; i<string.length; i++) {
+       if(string.indexOf(string[i]) !== string.lastIndexOf(string[i])) {
+        return false;
+       }
+  }
+  return true;
+};
+
+console.log("uniquesChar", uniquesChar("doinaa"));
+
+function sortArrStrings(strings) {
+  return strings.sort();
+};
+
+console.log("sortArrStrings", sortArrStrings(["doina", "apa","carte","cafea"]));
+
+function sortConsonants (string) {
+  const vowels = ["a", "e", "i", "o", "u"];
+  let newString = "";
+  for ( let i=0; i<string.length; i++) {
+    if(!vowels.includes(string[i])){
+      newString = newString + string[i];
+    }
+  }
+  const splitString = newString.split("");
+  const sortConsonants = splitString.sort().join("");
+  return sortConsonants;
+};
+
+console.log("sortConsonants", sortConsonants("doinagherasim"))
+
+function arrayObjSort (arrayObj, property) {
+  return arrayObj.sort((a,b) => {
+    if(typeof(a[property]) === "number" && typeof(b[property]) === "number") {
+     return  a[property] - b[property];
+    } else {
+     return a[property].localeCompare(b[property]);
+    }
+  })
+};
+
+console.log("arrayObjSort", arrayObjSort([
+  {id:5, name: "pavel", age: 34}, 
+  {id:2, name:"ana", age:45}, 
+  {id:3, name: "doina", age:70}], 
+  "age"));
+
+  function reverseNum(number) {
+   const stringNumRev = number.toString().split("").reverse().join("");
+   return stringNumRev;
+  };
+
+  console.log("reverseNum", reverseNum(1604));
+
+function toTitleCase(string) {
+return string.charAt(0).toUpperCase()+string.slice(1).toLowerCase();
+};
+
+function arrTitleCase(array) {
+  return array.map((string)=> toTitleCase(string));
+}
+console.log("toTitleCase", toTitleCase("laptop"))
+console.log("arrTitleCase", arrTitleCase(["laptop", "carte", "poezie"]))
+
+function arrMultiple(numbers, value) {
+return numbers.map((n) => n*value)
+};
+
+console.log("arrMultiple", arrMultiple([4,3,2,6], 2));
+
+function isMultiple(arrNumbers, value) {
+  return arrNumbers.filter((number) => number % value === 0)
+};
+
+console.log("isMultiple", isMultiple([5,10,3,8,9], 5));
+
+function isPrime(number) {
+  if(number < 2) {
+    return false;
+  } 
+  for (let i=2; i<number; i++) {
+  if(number % i === 0) {
+    return false;
+  }
+  }
+  return true;
+};
+
+function arrPrime(arrNumbers) {
+  return arrNumbers.filter((number) => isPrime(number))
+};
+
+console.log("arrPrime", arrPrime([2,5,6,7,8,9]));
+
+function reversedString (string) {
+  return string.split("").reverse().join("");
+};
+
+console.log("reverseString", reversedString("doina"))
+
+function filterArrObjects(array, objProperty) {
+ return  array.filter((object)=> object.hasOwnProperty(objProperty));
+};
+
+console.log("filterArrObjects",filterArrObjects([
+  {id:5, name: "pavel", age: 34}, 
+  {id:2, name:"ana", age:45}, 
+  {id:3, name: "doina"}], 
+  "age"));
+
+function alphString(string) {
+  return string.split("").sort().join("");
+};
+
+console.log("alphString", alphString("gherasim"))
+
+function largerNum(num1, num2) {
+  if(num1>num2){
+    return num1;
+  } else {
+    return num2;
+  }
+};
+
+console.log("largerNum", largerNum(2,8));
+
+function sumEven(arrayNum) {
+  let sum =0;
+  for (let i=0; i<arrayNum.length; i++) {
+    if(arrayNum[i] % 2 === 0) {
+      sum += arrayNum[i];
+    }
+  }
+  return sum;
+};
+
+console.log("sumEven", sumEven([2,3,5,4,6,8]));
+
+
+
+
 
   return (
     <div>
