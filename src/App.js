@@ -1,5 +1,7 @@
 function App() {
 
+// JAVASCRIPT 
+
 function minValue(numbers) {
   let min = numbers[0];
   for (let i = 0; i<numbers.length; i++) {
@@ -176,21 +178,22 @@ function sortConsonants (string) {
 
 console.log("sortConsonants", sortConsonants("doinagherasim"))
 
-function arrayObjSort (arrayObj, property) {
-  return arrayObj.sort((a,b) => {
-    if(typeof(a[property]) === "number" && typeof(b[property]) === "number") {
-     return  a[property] - b[property];
-    } else {
-     return a[property].localeCompare(b[property]);
-    }
-  })
-};
+function arrayObjSort(arrayObj, property) {
+  return arrayObj.sort((a, b) => {
+    if (typeof arrayObj[0][property] === "number") {
+      return a[property] - b[property];
+    } else if (typeof arrayObj[0][property] === "string") {
+      return a[property].localeCompare(b[property]);
+    } 
+    
+  });
+}
 
-console.log("arrayObjSort", arrayObjSort([
+console.log("arrayObjSortHEREEEE", arrayObjSort([
   {id:5, name: "pavel", age: 34}, 
   {id:2, name:"ana", age:45}, 
   {id:3, name: "doina", age:70}], 
-  "age"));
+  "name"));
 
   function reverseNum(number) {
    const stringNumRev = number.toString().split("").reverse().join("");
@@ -283,8 +286,150 @@ function sumEven(arrayNum) {
 
 console.log("sumEven", sumEven([2,3,5,4,6,8]));
 
+function validEmail(email) {
+const mustHave = "@gmail.com";
+if(!mustHave.includes(email)) {
+  return true;
+}
+return false;
+};
+
+console.log("validEmail", validEmail("gherasimdoina93@gmail.com"))
+
+function oddNumbers(arrNumbers) {
+  return arrNumbers.filter((number) => number % 2 !==0);
+};
+
+console.log("oddnum", oddNumbers([1,2,3,4,5,6]));
+
+function reverseString(string) {
+  return string.split("").reverse().join("");
+};
+
+console.log("revStr", reverseString("carte"));
+
+function arrUppercase(arrString) {
+  return arrString.map((string) => string.toUpperCase())
+};
+
+console.log("toupp", arrUppercase(["carte", "tech", "cana"]));
+
+function validTel(telNum) {
+  if(telNum.length === 10) {
+    return true;
+  }
+  return false;
+};
+
+console.log("tel", validTel("0733121450"));
+
+function arrObjSort (arrayObj, property) {
+  return arrayObj.sort((a,b) => {
+    if(typeof arrayObj[0][property] === "number") {
+     return  a[property] - b[property];
+    } else if (typeof arrayObj[0][property] === "string" ){
+      return a[property].localeCompare(b[property]);
+    }
+  })
+};
+
+console.log("arrObjSort", arrObjSort([
+  {id:2,
+  name:"book"},
+  {id:6,
+  name:"apple"},
+  {id:4,
+  name: "tech"}
+]),"name")
 
 
+function alphanumeric(string) {
+  return /[!@#$%^&*()_+]/i.test(string)
+}
+
+console.log("alpha", alphanumeric("er453"));
+
+function product(arrayNum) {
+  let product = 1;
+  for (let i=0; i<arrayNum.length; i++) {
+    product = product * arrayNum[i];
+  }
+  return product;
+};
+
+console.log("product", product([1,2,3,4,5]));
+
+function avgArr(arrayNum) {
+  let sum = 0;
+  for (let i=0; i<arrayNum.length; i++) {
+    sum += arrayNum[i];
+  }
+  return sum / arrayNum.length
+}
+
+console.log("avg", avgArr([1,2,3,3,4]));
+
+function nrVowels(string) {
+  let countVowels = 0;
+  let vowels = ["a","e","i","o","u"]
+  for (let i=0; i<string.length; i++) {
+    if(vowels.includes(string[i])) {
+      countVowels ++ ;
+    }
+  }
+  return countVowels;
+};
+
+console.log("countV", nrVowels("doina"));
+
+function stringFilter(string, substring) {
+ return  string.filter((string)=> string.includes(substring));
+};
+
+console.log("substring", stringFilter(["hello","olla", "location", "love"], "lo"));
+
+function arrFilterValue(array, property, value) {
+  return array.filter((obj) => obj[property] === value);
+}
+
+console.log("arrFilterValue", arrFilterValue([
+  {id:5, name: "ana", age: 34}, 
+  {id:2, name:"ana", age:45}, 
+  {id:3, name: "doina"}], "name", 
+  "ana"));
+
+function squaredNumber(number) {
+const digits = number.toString().split("");
+const squareDigit = digits.map((digit)=>digit*digit);
+const toNumber = parseInt((squareDigit).join(""));
+return toNumber;
+};
+
+console.log("squared", squaredNumber(1452));
+
+function belowValue(numbers, value) {
+return numbers.filter((num) => num < value);
+};
+
+console.log("below", belowValue([2,4,5,8,3,9], 8));
+
+function spaceReplace(string, char) {
+  return string.replace(" ", char);
+};
+
+console.log("replace", spaceReplace("hello world","@"));
+
+function longest(array) {
+  let longest = "";
+  for(let i=0; i<array.length; i++) {
+    if(array[i].length > longest.length) {
+      longest = array[i];
+    }
+  }
+  return longest;
+};
+
+console.log("longest", longest(["book", "coffee", "mountains green"]))
 
 
   return (
