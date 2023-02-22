@@ -184,8 +184,9 @@ function arrayObjSort(arrayObj, property) {
       return a[property] - b[property];
     } else if (typeof arrayObj[0][property] === "string") {
       return a[property].localeCompare(b[property]);
-    } 
-    
+    } else {
+      return 0;
+    }
   });
 }
 
@@ -324,11 +325,14 @@ function validTel(telNum) {
 console.log("tel", validTel("0733121450"));
 
 function arrObjSort (arrayObj, property) {
-  return arrayObj.sort((a,b) => {
+  return arrayObj.sort((a,b) => 
+  {
     if(typeof arrayObj[0][property] === "number") {
      return  a[property] - b[property];
     } else if (typeof arrayObj[0][property] === "string" ){
       return a[property].localeCompare(b[property]);
+    } else {
+      return 0;
     }
   })
 };
@@ -429,7 +433,113 @@ function longest(array) {
   return longest;
 };
 
-console.log("longest", longest(["book", "coffee", "mountains green"]))
+console.log("longest", longest(["book", "coffee", "mountains green"]));
+
+console.log(typeof longest);
+
+const title = "Atomic habits";
+const pages = 200;
+const isFiction = false;
+const price = 40;
+const newPrice = 0.8;
+
+console.log(`The book ${title} has ${pages} pages and this is a ${isFiction ? "fiction" : "non-fiction"} book, and the new price is ${price * newPrice} RON.`)
+
+// type coercion
+function testData () {
+  const testTypes = (true/ false);
+  console.log("ans", testTypes);
+  console.log("type", typeof testTypes)
+};
+
+console.log(testData());
+
+const string1 = "hello, my friend";
+const string2="world";
+
+console.log("concat", string1.concat(string2));
+console.log("substring", string1.substring(1,3));
+console.log("charAt", string1.charAt(1));
+console.log(string1.split(","));
+console.log("index", string1.indexOf("friend"));
+
+function declaration(){
+  return "Function declaratio";
+};
+
+console.log(declaration());
+
+function parametres(number) {
+  return `This is number ${number}`;
+};
+
+console.log(parametres(5));
+
+function value (n,m){
+  return n*m;
+};
+
+console.log(value(4,5));
+
+const newMessage = 'this is a new message';
+
+function message() {
+  const newMessage="this is second new message";
+  return newMessage;
+};
+
+console.log(newMessage);
+console.log(message());
+
+function calculation(num1, num2, callbackFunction) {
+  return callbackFunction(num1, num2);
+};
+
+function addNumbers(a,b) {
+  return a+b;
+};
+
+console.log(calculation(2,4,addNumbers));
+
+const number = 5;
+
+if(number === 5) {
+  console.log("roll img dice 5");
+} else if (number === 4) {
+  console.log("roll img dice 4");
+};
+
+const symbol = "+";
+
+function claculator (num1, num2) {
+switch(symbol) {
+  case "+":
+    return num1+num2;
+  case "-":
+    return num1-num2;
+  case "*": 
+  return num1*num2;
+ case "/":
+  return num1/num2;
+  default:
+  return ("no symbol found") 
+}
+};
+
+console.log(claculator(4,6,symbol));
+
+const number3 = 4;
+const check = number3 === 3 ? "ok" : "not ok";
+
+console.log(check)
+
+
+
+
+
+
+
+
 
 
   return (
