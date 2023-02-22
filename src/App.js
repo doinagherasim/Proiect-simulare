@@ -644,23 +644,23 @@ function cashWidth (accBalance, withdrowal) {
 
 console.log(cashWidth(4000, 3500));
 
+const pickNumber = [1,4,7,3,3,2,8,9,1];
 
-  
+function uniqueNumbers() {
+  let newNr=[];
+  for (let i=0; i<pickNumber.length; i++) {
+    if(!newNr.includes(pickNumber[i])) {
+      newNr.push(pickNumber[i]);
+    }
+  }
+  return newNr;
+};
 
+console.log(uniqueNumbers());
 
+console.log([...new Set(pickNumber)])
 
-
-
-
-
-
-
-
-
-
-
-
-
+// REACT
 
 
   return (
