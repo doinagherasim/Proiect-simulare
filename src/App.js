@@ -533,6 +533,127 @@ const check = number3 === 3 ? "ok" : "not ok";
 
 console.log(check)
 
+for (let i=0; i<5; i++) {
+  console.log("for",i)
+};
+
+let z=0;
+while (z<5) {
+ console.log("while", z);
+ z++;
+};
+
+let n=0;
+do {
+  console.log("dowhile",n);
+  n++;
+} while (n<2);
+
+const book = {
+  title: "Javascript",
+  pages: 400,
+  color: "red"
+};
+
+for (let key in book) {
+  console.log(`${key} => ${book[key]}`)
+};
+
+const transactions = [200, -100, 400, -200];
+
+function transactionsDetails() {
+  let negative = [];
+  let positive = [];
+for (let i of transactions) {
+  if(i<0) {
+    negative.push(i);
+    console.log(negative);
+  } else {
+    positive.push(i);
+  }
+}
+return `The negative is ${negative} and positive ${positive}`;
+};
+
+console.log("neg", transactionsDetails());
+
+for (let i=0; i<transactions.length; i++) {
+  console.log("for loop", transactions[i]);
+};
+
+for(let i of transactions) {
+  console.log("for of", i)
+};
+
+for (let i=0; i<transactions.length; i++) {
+  if(transactions[i]>0) {
+    console.log("poz", transactions[i])
+  }
+};
+
+transactions.push(500);
+console.log(transactions);
+
+transactions.splice(1,1);
+
+console.log("delete", transactions)
+
+
+const collections = transactions.filter((transaction) => transaction > 0);
+console.log("coll", collections);
+
+const bankTransactions = {
+bank: "ING",
+balance: 2000,
+deposits: 1000,
+name: "Doina Gherasim"
+};
+
+console.log(bankTransactions);
+console.log("1", bankTransactions.bank);
+
+for (let key in bankTransactions) {
+  console.log(`${key}: ${bankTransactions[key]}`)
+};
+
+bankTransactions.phone = "0733121467";
+delete bankTransactions.balance
+
+console.log(bankTransactions);
+
+console.log(Object.keys(bankTransactions));
+console.log(Object.values(bankTransactions));
+console.log(Object.entries(bankTransactions));
+
+// try {
+//   // some code that may throw an error
+//   const result = 10 / "foo"; // this will throw a TypeError
+// } catch (error) {
+//   // handling any error
+//   console.log("An error occurred: " + error.message);
+// }
+
+function cashWidth (accBalance, withdrowal) {
+  if(accBalance < withdrowal) {
+   return "not enough money, try less cash";
+  } else {
+   let remaining = accBalance-  withdrowal; 
+    return `the remaining balance is ${remaining}`
+  }
+};
+
+console.log(cashWidth(4000, 3500));
+
+
+  
+
+
+
+
+
+
+
+
 
 
 
