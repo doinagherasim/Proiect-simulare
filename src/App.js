@@ -1,3 +1,6 @@
+import ReactBascics from "./React";
+import ReactProps from "./ReactProps";
+
 function App() {
 
 // JAVASCRIPT 
@@ -658,15 +661,19 @@ function uniqueNumbers() {
 
 console.log(uniqueNumbers());
 
-console.log([...new Set(pickNumber)])
+console.log([...new Set(pickNumber)]);
 
-// REACT
-
+const fruits = ['apple', 'banana', 'cherry'];
+const vegetables = ['carrot', 'pepper', 'tomato'];
 
   return (
     <div>
       <h2>Let's get started!</h2>
-      
+      <ReactBascics/>
+      <ReactProps name="Person1"/>
+      <ReactProps name="Person2"/>
+      <ReactProps  title="Fruits" items={fruits}/>
+      <ReactProps title="Vegetables" items={vegetables}/>
     </div>
   );
 }
