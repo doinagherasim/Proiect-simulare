@@ -674,6 +674,7 @@ const vegetables = ['carrot', 'pepper', 'tomato'];
       <ReactProps name="Person2"/>
       <ReactProps  title="Fruits" items={fruits}/>
       <ReactProps title="Vegetables" items={vegetables}/>
+      <ReactBascics initialText="Love" newText="Books"/>
     </div>
   );
 }
