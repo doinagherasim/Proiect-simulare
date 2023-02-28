@@ -125,14 +125,20 @@ function ReactBascics(props) {
     e.preventDefault();    
     alert(value);
     };
-    
 
-
-
+    //show - hide text
+    const [showText, setShowText] = useState(false);
+    const showHideBtn = () => {
+        if (showText === false) {
+            setShowText(true);
+        } else if (showText === true) {
+            setShowText(false)
+        }
+    }
 
 
     return (
-        <div>
+        <div className="container">
             <br></br>
             <h4>EX. 1- Counter</h4>
         <p>{counter}</p>
@@ -192,7 +198,7 @@ function ReactBascics(props) {
             <br></br>
             <h4>EX. 8- Change backround color</h4>
             <div style={isToggled ? {backgroundColor:"green", width:100, height:100} : {backgroundColor:"blue", height:100, width:100}}></div>
-            <button onClick={clickColor}>Change backround color to: {isToggled ? "GREEN" : "BLUE" }</button>
+            <button onClick={clickColor}>Change bg color: {isToggled ? "GREEN" : "BLUE" }</button>
             <br></br>
             <h4>EX. 9- Add item</h4>
             <ul>
@@ -231,7 +237,28 @@ function ReactBascics(props) {
 
             <br></br>
             <h4>EX. 13- Toogle show/ hide</h4>
+            <pre style={{color:"white"}} className={showText ? "" : "hide"}>
+                React is a free and open-source front-end JavaScript library 
+                <br></br>
+                for building user interfaces based on components. It is maintained by Meta 
+                 <br></br>
+                and a community of individual developers and companies.
+            </pre>
+            <button onClick={showHideBtn}>{showText ? "Hide" : "Show"}</button>
+
+            <br></br>
+            <h4>EX. 14- List using props</h4>
+            <h5>{props.name}</h5>
+            <h2>{props.title}</h2>
+            <ul>
+            { Array.isArray(props.items) && 
+                props.items.map ((element, index) => 
+                <li key={index}>{element}</li>
+               )
+            }
+    </ul>
             
+    <p className="finish">FINISH</p>        
     </div>
     )
 }

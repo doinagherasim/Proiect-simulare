@@ -9,9 +9,43 @@ html {
 }
 
 body {
-  margin: 0;
+  /* margin: 0; */
   background-color: #3f3f3f;
+  color: white;
 }
 h4 {
   color: greenyellow;
+}
+.hide {
+  display: none;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 1000px;
+  height: 200vh;
+  bottom: 100px;
+}
+button {
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: rgb(3, 168, 168);;
+  margin-left: 5px;
+}
+button:active {
+  background-color:aqua;
+}
+button:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+input {
+  height: 30px;
+  margin-left: 5px;
+}
+.finish {
+ margin-top: 20px;
+  bottom: 20px;
 }
