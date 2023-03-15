@@ -1,37 +1,18 @@
+import React from "react";
+import ListOfItems from "./App/ListOfItems";
 import JavaScriptExercices from "./JavaScript";
 import ReactBascics from "./React";
 
 function App() {
-const ListOfDetails = [
-  {
-    id: 0,
-    name: "Person 1",
-    title: "Fruits",
-    items: [
-      'apple', 'banana', 'cherry'
-    ]
-  },
-  {
-    id: 1,
-    name: "Person 2",
-    title: "Vegetables",
-    items: [
-      'carrot', 'pepper', 'tomato'
-    ]
-  },
-  {
-    id: 2,
-    initialText: "Love",
-    newText: "Books"
-  }
-];
+const books = ['Atomic Habits', 'Supranatural', 'The psichology of money'];
+const bookList = ["atomic habits", "Psichology of Money", "Placebo"]
 
   return (
     <div>
       <h2>Let's get started!</h2>
+      <ListOfItems bookList={bookList}/>
       <JavaScriptExercices/>
-      <ReactBascics name={ListOfDetails.name} title={ListOfDetails.title} items={ListOfDetails.items}
-      initialText={ListOfDetails.initialText} newText={ListOfDetails.newText}/>
+      <ReactBascics books={books}/>
     </div>
   );
 }

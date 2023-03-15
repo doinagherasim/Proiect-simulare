@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // 1-counter
 
@@ -136,6 +136,67 @@ function ReactBascics(props) {
         }
     }
 
+    // form & summary
+    const [yourName, setYourName] = useState("");
+    const [yourSurname, setYourSurname] = useState("");
+    const [yourAddress, setYourAddress] = useState("");
+
+    const submitFormHandler = (event) => {
+        event.preventDefault();
+        alert(`Name:${yourName}\n Surname:${yourSurname} \n Address:${yourAddress}`)
+    }
+
+    // to do list
+
+    const [toDoList, setToDolist] = useState([
+        "read 5 pages", "finish header design"
+    ]);
+
+    const deleteItemsToDo = (index) => {
+        const newToDo = [...toDoList];
+        newToDo.splice(index,1);
+        setToDolist(newToDo);
+    };
+
+    const [newToDo, setNewToDo] = useState("");
+
+    const addToDo = () => {
+        setToDolist([...toDoList, newToDo]);
+        setNewToDo("");
+    }
+
+    // cpounter odd after 5 sec
+
+    const [countNumbers, setcountNumbers] = useState(1);
+    const [display, setDisplay] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setDisplay(true);
+        }, 5000)
+        
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [])
+
+    const countNumbersHandler = () => {
+          setcountNumbers(countNumbers + 2)
+    };
+
+    //19
+    const [numberStart, setNumberStart] = useState(0);
+    const [numberList, setNumberList] = useState([]);
+
+    const countStartHandler = () => {
+      setNumberStart(numberStart +1);
+      let newList = [...numberList];
+        newList.push(numberStart);
+        setNumberList([...numberList, numberStart]);
+    };
+
+    const evenItems = numberList.filter((num) => num % 2 === 0);
+    const stringlist = evenItems.join(",");
 
     return (
         <div className="container">
@@ -248,15 +309,70 @@ function ReactBascics(props) {
 
             <br></br>
             <h4>EX. 14- List using props</h4>
-            <h5>{props.name}</h5>
-            <h2>{props.title}</h2>
             <ul>
-            { Array.isArray(props.items) && 
-                props.items.map ((element, index) => 
-                <li key={index}>{element}</li>
-               )
-            }
-    </ul>
+                {
+                    props.books.map((element, index) => 
+                    <li key={index}>{element}</li>)
+                }
+            </ul>
+
+            <br></br>
+            <h4>EX. 15- Form: name, surname, address & Summary la submit </h4>
+
+            <form onSubmit={submitFormHandler}>
+                <label>Name:</label><input placeholder="name" type={text} name="name" 
+                onChange={(event)=>setYourName(event.target.value)}/>
+                <label>Surname:</label><input placeholder="surame" type={text} name="surname"
+                onChange={(event) => setYourSurname(event.target.value)}/>
+                <label>Address:</label><input placeholder="address" type={text} name="address"
+                onChange={(event) => setYourAddress(event.target.value)}/>
+                <button type="submit">Submit form</button>
+            </form>
+
+            <br></br>
+            <h4>EX. 16- To do list: add items, remove items </h4>
+
+            <h5>TO DO LIST</h5>
+        <div>
+           <ul> 
+            {
+            toDoList.map((element, index) => 
+            <li key={index}>
+            {element}
+            <button onClick={() => deleteItemsToDo(index)}>Delete</button>
+        </li>
+        )}
+           </ul>
+           <input placeholder="add new task" type={text} 
+           onChange={(event) => setNewToDo(event.target.value) }></input>
+           <button onClick={addToDo}>Add item</button>
+
+        </div>
+
+            <br></br>
+            <h4>EX. 18- Counter, desplay odd numbers after 5 seconds </h4>
+
+            <div> { display && (
+                <div>
+            <p>{countNumbers}</p>
+            <button onClick={countNumbersHandler}>Click me!</button>
+            </div>
+            )}
+            </div>
+
+            <br></br>
+            <h4>EX. 19- Create a button that increments a counter, and show the counter.</h4> 
+
+            <p>{numberStart}</p> 
+            <button onClick={countStartHandler}>Count</button>  
+
+            <br></br>
+            <h4>EX. 20- Now, instead of updating the counter, add every number to a list
+ *    and show the list under the button. So if I press the button 5 times,
+ *    I'll see a list "1, 2, 3, 4, 5"</h4>
+
+            <p>{stringlist}</p>
+            <p>{numberList.reduce((acc, current) => acc +current, 0)}</p>
             
     <p className="finish">FINISH</p>        
     </div>
