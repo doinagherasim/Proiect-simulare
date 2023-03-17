@@ -31,6 +31,7 @@ button {
   width: 100px;
   height: 30px;
   border: none;
+  margin: 10px;
   background-color: rgb(3, 168, 168);;
   margin-left: 5px;
 }
@@ -44,8 +45,12 @@ button:hover {
 input {
   height: 30px;
   margin-left: 5px;
+  width: 200px;
 }
 .finish {
  margin-top: 20px;
   bottom: 20px;
+}
+h3 {
+  color:aquamarine; 
 }

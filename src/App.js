@@ -12,7 +12,7 @@ const bookList = ["atomic habits", "Psichology of Money", "Placebo"]
       <h2>Let's get started!</h2>
       <ListOfItems bookList={bookList}/>
       <JavaScriptExercices/>
-      <ReactBascics books={books}/>
+      <ReactBascics books={books} initialText="text" newText="new text"/>
     </div>
   );
 }

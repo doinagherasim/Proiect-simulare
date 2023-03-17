@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Component1 from "./Component1"
+import Component2 from "./Component2"
 
 // 1-counter
 
@@ -20,14 +22,14 @@ function ReactBascics(props) {
             complete: true}
     ]);
 
-    // delete 
+    // 3.  delete 
     const deleteTasks=(index)=>{
     const newTasks = [...tasks];
     newTasks.splice(index,1);
     setTasks(newTasks);
     };
 
-    // addTasks
+    // 4. addTasks
    const addTasks =(e) => {
    e.preventDefault();
    const newTask = {
@@ -47,7 +49,7 @@ function ReactBascics(props) {
     alert(`Name: ${name}, \n Email: ${email}, \n Message: ${msg}`)
    };
 
-   // list of books
+   //5.  list of books
    const books = ["atomic habits", "supranatural", "grit"];
 
    // change MSG
@@ -114,7 +116,7 @@ function ReactBascics(props) {
     setTeaList([...newTeaList]);
     }
 
-    // change btn text
+    // 11. change btn text
     const [text, setText] = useState(props.initialText);
     const changeText = () => {
         setText(props.newText);
@@ -198,6 +200,30 @@ function ReactBascics(props) {
     const evenItems = numberList.filter((num) => num % 2 === 0);
     const stringlist = evenItems.join(",");
 
+    // 22. render components
+    const [component, setComponenent] = useState(null);
+    const [showComponent, setShowComponent] = useState(null);
+
+    const showComponents = () => {
+     if (component === "1") {
+        setShowComponent(<Component1/>)
+        console.log("comp1", component)
+     } else if (component === "2") {
+        setShowComponent(<Component2/>)
+        console.log("comp2", component)
+     } else {
+        setShowComponent("No component found with this name")
+     }
+    }
+
+    // 23. Favorite color
+    const [color, setColor] = useState("");
+    const submitColor =(e) => {
+        e.preventDefault();
+        setColor(color)
+        alert(`${color}`)
+    }
+
     return (
         <div className="container">
             <br></br>
@@ -257,8 +283,9 @@ function ReactBascics(props) {
                 <button type="submit">Show</button>
             </form>
             <br></br>
-            <h4>EX. 8- Change backround color</h4>
-            <div style={isToggled ? {backgroundColor:"green", width:100, height:100} : {backgroundColor:"blue", height:100, width:100}}></div>
+            <h4>EX. 8- Change div color</h4>
+            <div style={isToggled ? {backgroundColor:"green", width:300, height:200} : 
+            {backgroundColor:"blue", height:200, width:300}}>CLICK BUTTON BELOW TO CHANGE COLOR</div>
             <button onClick={clickColor}>Change bg color: {isToggled ? "GREEN" : "BLUE" }</button>
             <br></br>
             <h4>EX. 9- Add item</h4>
@@ -288,7 +315,8 @@ function ReactBascics(props) {
             </ul> 
             <br></br>
             <h4>EX. 11- Button change text with props</h4> 
-            <button onClick={changeText}>{text}</button>
+            <p>{text}</p>
+            <button onClick={changeText}>Click me!</button>
             <br></br>
             <h4>EX. 12- Alert from input</h4>
             <form onSubmit={showAlert}> 
@@ -351,7 +379,6 @@ function ReactBascics(props) {
 
             <br></br>
             <h4>EX. 18- Counter, desplay odd numbers after 5 seconds </h4>
-
             <div> { display && (
                 <div>
             <p>{countNumbers}</p>
@@ -367,12 +394,35 @@ function ReactBascics(props) {
             <button onClick={countStartHandler}>Count</button>  
 
             <br></br>
-            <h4>EX. 20- Now, instead of updating the counter, add every number to a list
+            <h4>EX. 20- Now, instead of updating the counter, add every even number to a list
  *    and show the list under the button. So if I press the button 5 times,
- *    I'll see a list "1, 2, 3, 4, 5"</h4>
+ *    I'll see a list "0,2,4,6.."</h4>
 
             <p>{stringlist}</p>
+            <h4>EX. 21- Add the nombers from ex. 19</h4>
             <p>{numberList.reduce((acc, current) => acc +current, 0)}</p>
+
+            <br></br>
+            <h4>EX. 22- Render different components based on a value from input</h4>
+            <p>Type what component do you want to see: 1 or 2</p>
+            <h3>{showComponent}</h3>
+            <input type={text} placeholder="component 1 or 2" onChange={(event)=>setComponenent(event.target.value)}/>
+            <button onClick={showComponents}>Show component!</button>
+
+            <br></br>
+            <h4>EX. 23- Submit fav color from selected input</h4>
+            <form onSubmit={submitColor}>
+                <p>Submit your favorite color from the below:</p>
+                <select value={color} onChange={(event)=>setColor(event.target.value)}>
+                    <option>Red</option>
+                    <option>Green</option>
+                    <option>Blue</option>
+                    <option>Yellow</option>
+                    <option>White</option>
+                    <option>Black</option>
+                </select>
+                <button type="submit">Submit color!</button>
+            </form>
             
     <p className="finish">FINISH</p>        
     </div>

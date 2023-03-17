@@ -1,7 +1,28 @@
 function JavaScriptExercices () {
     // JAVASCRIPT 
 
-function minValue(numbers) {
+  function sumNumbers (numbers) {
+    let sum =0;
+    for (let i=0; i<numbers.length; i++){
+      sum = sum + numbers[i];
+    }
+    return sum;
+  };
+
+  console.log("sumNum", sumNumbers([1,2,3]));
+
+  function reverseThisString (string) {
+    let newString = [...string];
+    newString.reverse();
+    return newString.join("");
+  };
+
+  console.log("reverseString", reverseThisString("light"));
+
+  
+    
+
+  function minValue(numbers) {
     let min = numbers[0];
     for (let i = 0; i<numbers.length; i++) {
       if(numbers[i] < min) {
@@ -623,14 +644,7 @@ function minValue(numbers) {
   console.log(Object.keys(bankTransactions));
   console.log(Object.values(bankTransactions));
   console.log(Object.entries(bankTransactions));
-  
-  // try {
-  //   // some code that may throw an error
-  //   const result = 10 / "foo"; // this will throw a TypeError
-  // } catch (error) {
-  //   // handling any error
-  //   console.log("An error occurred: " + error.message);
-  // }
+
   
   function cashWidth (accBalance, withdrowal) {
     if(accBalance < withdrowal) {
@@ -658,6 +672,10 @@ function minValue(numbers) {
   console.log(uniqueNumbers());
   
   console.log([...new Set(pickNumber)]);
+
+
+
+
   return (
     <div></div>
   )
