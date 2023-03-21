@@ -1,15 +1,17 @@
 function JavaScriptExercices () {
     // JAVASCRIPT 
 
-  function sumNumbers (numbers) {
+  function avgNumbers (numbers) {
     let sum =0;
+    let average = 0; 
     for (let i=0; i<numbers.length; i++){
       sum = sum + numbers[i];
+      average = sum / numbers.length
     }
-    return sum;
+    return average;
   };
 
-  console.log("sumNum", sumNumbers([1,2,3]));
+  console.log("average", avgNumbers([1,2,3]));
 
   function reverseThisString (string) {
     let newString = [...string];
@@ -19,9 +21,47 @@ function JavaScriptExercices () {
 
   console.log("reverseString", reverseThisString("light"));
 
-  
-    
+  function highestValue (numbers) {
+    let max = 0;
+    for (let i=0; i < numbers.length; i++) {
+      if(numbers[i] > max) {
+        max = numbers[i];
+      }
+    }
+    return max;
+  };
 
+  console.log("maxValue", highestValue([1,2,36,2]));
+
+  function highestMinusLowest (array) {
+    let max =0;
+    let min = array[0];
+    for(let i=0; i<array.length; i++) {
+        if (array[i] > max) {
+          max = array[i];
+        }
+    }
+    for (let i=min; i<array.length; i++) {
+      if( array[i] < min) {
+         min = array[i];
+      }
+    }
+    return max - min;
+  };
+
+  console.log("highestMinusLowest", highestMinusLowest([1,3,6,2]));
+
+  function sumBetween (start, end) {
+    let sum =0;
+    for (let i=start; i<=end; i++ ) {
+      sum = sum+i;
+    }
+    return sum;
+  };
+
+  console.log("sumBetween", sumBetween(2,4));
+
+  
   function minValue(numbers) {
     let min = numbers[0];
     for (let i = 0; i<numbers.length; i++) {
@@ -31,8 +71,108 @@ function JavaScriptExercices () {
     }
     return min;
   };
+
+  console.log("minValue", minValue([9,5,3,2]));
+
+ function longestString(string) {
+  let longestString = "";
+  for (let i=0; i < string.length; i++) {
+    if(string[i].length > longestString.length){
+      longestString = string[i];
+    }
+  }
+  return longestString;
+ }
+
+  console.log("longest", longestString(["apple", "teaapple", "redcarpetblue"]));
+
+  function shortestString (string) {
+    let shortestString = string[0];
+    for (let i = 0; i<string.length; i++) {
+      if(string[i].length < shortestString.length){
+        shortestString=string[i];
+      }
+    }
+    return shortestString;
+  };
+
+  console.log("shortest", shortestString(["apple", "tea", "redcarpetblue"]));
+
+  function firstLetterCapitalized(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  console.log("fstletterCp",firstLetterCapitalized("doina"));
+
+function secondHighestNumber(array){
+  array.sort((a,b) => b-a);
+  for(let i=0; i<array.length; i++){
+    if(array[i] < array[0]){
+      return array[i];
+    }
+  }
+  return null;
+}
+  console.log("secondHighestNumber", secondHighestNumber([9,9,10]));
+
+  function digitReversed (number) {
+    const reverseNumber=number.toString()
+    .split("")
+    .reverse()
+    .join("")
+    return reverseNumber;
+  };
+
+  console.log("reversedNumber", digitReversed(12345));
+
+  function firstLettersCapitalized (array) {
+    const firstLetterUppercase = (element) => {
+      return element.charAt(0).toUpperCase() + element.slice(1).toLowerCase();
+    }
+    const arrayFirstLetterUppercase = array.map((element)=>firstLetterUppercase(element));
+    return arrayFirstLetterUppercase;
+  };
+
+  console.log("first letters capitalized", firstLettersCapitalized(["booK", "tEa", "run"]));
+
+  function multipleOfValue(arr, value) {
+    const newArray = arr.filter((num) => num % value === 0);
+    return newArray;
+  };
+
+  console.log("multipleOfValue", multipleOfValue([3,9,2,15], 3));
+
+  function reversedString2 (string) {
+    return  string.split("").reverse().join("");
+  };
+
+  console.log("reversedWords", reversedString2("book title is javascript"));
+
+  function sumEven2 (array) {
+     return array.filter((number)=> number %2 === 0)
+     .reduce((acc, current) => acc + current,0)
   
-  console.log("minValue", minValue([9,5,3,2]))
+  };
+
+  console.log("sumEven2", sumEven2([2,4,7,6,9,10]));
+
+  function oddnumbers2 (array) {
+    return array.filter((number)=> number % 2 !==0);
+  };
+  console.log("oddNum2", oddnumbers2([2,4,7,6,9,10]));
+
+  function stringToUppercase (array) {
+    return array.map((element)=> element.toUpperCase());
+  };
+
+  console.log("uppercASE", stringToUppercase(["book", "tea", "run"]));
+
+  function avgNumbers2 (array) {
+    const sum = array.reduce((accumulator, current) => accumulator + current,0);
+    return sum/ array.length;
+  };
+
+  console.log("avgNum", avgNumbers2([2,4,6  ]))
   
   function vowels(string) {
     let vowels = ["a", "u", "e", "i", "o"];

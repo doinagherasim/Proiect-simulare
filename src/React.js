@@ -224,6 +224,26 @@ function ReactBascics(props) {
         alert(`${color}`)
     }
 
+    //24. Hobbies
+
+    const [hobbies, setHobbies] = useState([]);
+
+    function handleCheckboxChange(event) {
+      const hobby = event.target.value;
+      const isChecked = event.target.checked;
+  
+      if (isChecked) {
+        setHobbies([...hobbies, hobby]);
+      } else {
+        setHobbies(hobbies.filter((h) => h !== hobby));
+      }
+    }
+  
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert(`Selected hobbies: ${hobbies.join(', ')}`);
+    }
+
     return (
         <div className="container">
             <br></br>
@@ -423,6 +443,37 @@ function ReactBascics(props) {
                 </select>
                 <button type="submit">Submit color!</button>
             </form>
+
+            <br></br>
+            <h4>EX. 24- Submit fav hobbies from checkbox</h4>
+    <form onSubmit={handleSubmit}>
+      <h2>Select your favorite hobbies:</h2>
+      <div>
+        <input
+          type="checkbox"
+          value="reading"
+          onChange={handleCheckboxChange}
+        />
+        <label htmlFor="hobby1">Reading</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          value="sports"
+          onChange={handleCheckboxChange}
+        />
+        <label htmlFor="hobby2">Sports</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          value="music"
+          onChange={handleCheckboxChange}
+        />
+        <label htmlFor="hobby3">Music</label>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
             
     <p className="finish">FINISH</p>        
     </div>
