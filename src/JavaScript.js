@@ -810,8 +810,38 @@ function secondHighestNumber(array){
   };
   
   console.log(uniqueNumbers());
-  
   console.log([...new Set(pickNumber)]);
+
+  function squaredDigits(number) {
+    // convert to a string
+    let stringNum = number.toString();
+    // convert to an array
+    let arrayNum = [...stringNum];
+    // map square for each digit in the array
+    const squareArray = arrayNum.map((element) => element * element);
+    // transfor the array in a string
+    const squaredStr = squareArray.join("");
+    // transform string in a number
+    const squareNumber = parseInt(squaredStr);
+
+    // or much simplier, transfor in an array
+    const digits = number.toString().split('');
+    // map the array squared
+    const squaredDigits = digits.map((element) => element*element);
+    // transform in string, and after in number
+    const numberSquared = parseInt(squaredDigits.join(""));
+    return numberSquared;
+  };
+
+  console.log("squaredDigits", squaredDigits(1234));
+  console.log("squaredNumber", squaredNumber(1234));
+
+  function belowValue2(number, value) {
+    return number.filter((num) => num < value);
+  };
+
+  console.log("belowValue", belowValue2([2,5,9,6,9,23], 6))
+
 
 
 
